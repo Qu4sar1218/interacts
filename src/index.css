@@ -1,0 +1,492 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/noto-sans";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   InterACTS — Dark Green Neumorphism + Glassmorphism Theme
+   Single dark theme only. No light mode.
+   ============================================================ */
+
+:root {
+    /* --- Base --- */
+    --background: oklch(0.16 0.005 260);
+    --foreground: oklch(0.96 0.008 260);
+
+    /* --- Card / Popover (glass surfaces) --- */
+    --card: oklch(0.21 0.007 260);
+    --card-foreground: oklch(0.96 0.008 260);
+    --popover: oklch(0.23 0.007 260);
+    --popover-foreground: oklch(0.96 0.008 260);
+
+    /* --- Brand Emerald Primary --- */
+    --primary: oklch(0.72 0.19 155);
+    --primary-foreground: oklch(0.12 0.02 260);
+
+    /* --- Secondary / Muted --- */
+    --secondary: oklch(0.24 0.007 260);
+    --secondary-foreground: oklch(0.92 0.008 260);
+    --muted: oklch(0.22 0.007 260);
+    --muted-foreground: oklch(0.72 0.01 260);
+
+    /* --- Accent --- */
+    --accent: oklch(0.22 0.02 155);
+    --accent-foreground: oklch(0.96 0.008 260);
+
+    /* --- Destructive --- */
+    --destructive: oklch(0.66 0.22 25);
+
+    /* --- Borders / Inputs / Ring --- */
+    /* Stronger than legacy 16% so field edges meet ~3:1 vs adjacent surfaces (WCAG non-text) */
+    --border: oklch(1 0 0 / 26%);
+    --input: oklch(0.22 0.006 260 / 0.95);
+    /* Placeholder on --input fill: brighter than muted-foreground for AA on small text (text-xs) */
+    --input-placeholder: oklch(0.82 0.014 260);
+    --ring: oklch(0.72 0.19 155 / 78%);
+
+    /* --- Radius --- */
+    --radius: 0.75rem;
+
+    /* --- Charts (mostly green scale) --- */
+    --chart-1: oklch(0.86 0.17 155);
+    --chart-2: oklch(0.78 0.19 155);
+    --chart-3: oklch(0.70 0.19 155);
+    --chart-4: oklch(0.62 0.17 155);
+    --chart-5: oklch(0.54 0.14 155);
+
+    /* --- Sidebar --- */
+    --sidebar: oklch(0.18 0.006 260);
+    --sidebar-foreground: oklch(0.94 0.008 260);
+    --sidebar-primary: oklch(0.72 0.19 155);
+    --sidebar-primary-foreground: oklch(0.12 0.02 260);
+    --sidebar-accent: oklch(0.22 0.01 260);
+    --sidebar-accent-foreground: oklch(0.96 0.008 260);
+    --sidebar-border: oklch(1 0 0 / 14%);
+    --sidebar-ring: oklch(0.72 0.19 155 / 65%);
+}
+
+/* Force dark class — single dark theme, no toggling */
+.dark {
+    --background: oklch(0.16 0.005 260);
+    --foreground: oklch(0.96 0.008 260);
+    --card: oklch(0.21 0.007 260);
+    --card-foreground: oklch(0.96 0.008 260);
+    --popover: oklch(0.23 0.007 260);
+    --popover-foreground: oklch(0.96 0.008 260);
+    --primary: oklch(0.72 0.19 155);
+    --primary-foreground: oklch(0.12 0.02 260);
+    --secondary: oklch(0.24 0.007 260);
+    --secondary-foreground: oklch(0.92 0.008 260);
+    --muted: oklch(0.22 0.007 260);
+    --muted-foreground: oklch(0.72 0.01 260);
+    --accent: oklch(0.22 0.02 155);
+    --accent-foreground: oklch(0.96 0.008 260);
+    --destructive: oklch(0.66 0.22 25);
+    --border: oklch(1 0 0 / 26%);
+    --input: oklch(0.22 0.006 260 / 0.95);
+    --input-placeholder: oklch(0.82 0.014 260);
+    --ring: oklch(0.72 0.19 155 / 78%);
+    --chart-1: oklch(0.86 0.17 155);
+    --chart-2: oklch(0.78 0.19 155);
+    --chart-3: oklch(0.70 0.19 155);
+    --chart-4: oklch(0.62 0.17 155);
+    --chart-5: oklch(0.54 0.14 155);
+    --sidebar: oklch(0.18 0.006 260);
+    --sidebar-foreground: oklch(0.94 0.008 260);
+    --sidebar-primary: oklch(0.72 0.19 155);
+    --sidebar-primary-foreground: oklch(0.12 0.02 260);
+    --sidebar-accent: oklch(0.22 0.01 260);
+    --sidebar-accent-foreground: oklch(0.96 0.008 260);
+    --sidebar-border: oklch(1 0 0 / 14%);
+    --sidebar-ring: oklch(0.72 0.19 155 / 65%);
+}
+
+@theme inline {
+    --font-sans: 'Noto Sans Variable', sans-serif;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-input-placeholder: var(--input-placeholder);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    /* Semantic — face scanner / status */
+    --color-success: oklch(0.72 0.19 155);
+    --color-success-foreground: oklch(0.97 0.008 260);
+    --color-warning: oklch(0.80 0.16 85);
+    --color-warning-foreground: oklch(0.18 0.03 260);
+
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    html {
+        @apply font-sans;
+        /* Native form controls (date picker, scrollbars) match dark UI; improves calendar icon contrast */
+        color-scheme: dark;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* WebKit/Blink: date/datetime calendar affordance stays visible on dark inputs */
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 1;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        min-height: 100dvh;
+        background: linear-gradient(
+            135deg,
+            oklch(0.14 0.005 260) 0%,
+            oklch(0.17 0.006 255) 45%,
+            oklch(0.14 0.006 150) 100%
+        );
+        background-attachment: fixed;
+    }
+}
+
+/* ============================================================
+   Neumorphism + Glassmorphism Utility Classes
+   ============================================================ */
+
+@layer components {
+    /* Glass surface — frosted graphite glass */
+    .glass {
+        background: oklch(0.245 0.012 260 / 55%);
+        backdrop-filter: blur(18px) saturate(1.6);
+        -webkit-backdrop-filter: blur(18px) saturate(1.6);
+        border: 1px solid oklch(1 0 0 / 12%);
+    }
+
+    /* Glass with stronger tint */
+    .glass-strong {
+        background: oklch(0.265 0.014 260 / 72%);
+        backdrop-filter: blur(24px) saturate(1.8);
+        -webkit-backdrop-filter: blur(24px) saturate(1.8);
+        border: 1px solid oklch(0.72 0.19 155 / 20%);
+    }
+
+    /* Neumorphic raised — element pops out of surface */
+    .neu-raised {
+        box-shadow:
+            8px 8px 16px oklch(0 0 0 / 38%),
+            -5px -5px 12px oklch(0.34 0.012 260 / 22%);
+    }
+
+    /* Neumorphic inset — element pressed into surface */
+    .neu-inset {
+        box-shadow:
+            inset 4px 4px 9px oklch(0 0 0 / 38%),
+            inset -3px -3px 7px oklch(0.34 0.012 260 / 18%);
+    }
+
+    /* Neumorphic flat — subtle depth, resting state */
+    .neu-flat {
+        box-shadow:
+            4px 4px 8px oklch(0 0 0 / 28%),
+            -3px -3px 6px oklch(0.34 0.012 260 / 16%);
+    }
+
+    /* Cyan glow — for logo, primary accents */
+    .glow-green {
+        filter: drop-shadow(0 0 12px oklch(0.72 0.19 155 / 55%));
+    }
+
+    /* Lighter cyan glow — sidebar logo icon */
+    .logo-sidebar-glow {
+        filter:
+            drop-shadow(0 2px 10px oklch(0 0 0 / 30%))
+            drop-shadow(0 0 8px oklch(0.84 0.14 155 / 28%));
+    }
+
+    /* Cyan glow border ring */
+    .ring-green-glow {
+        box-shadow:
+            0 0 0 1px oklch(0.72 0.19 155 / 36%),
+            0 0 16px oklch(0.72 0.19 155 / 22%);
+    }
+
+    /* Safe areas (mobile scanner) */
+    .safe-top {
+        padding-top: env(safe-area-inset-top, 0);
+    }
+    .safe-bottom {
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    .page-header {
+        @apply text-xl font-bold tracking-tight sm:text-2xl md:text-3xl;
+    }
+
+    .stat-value {
+        @apply text-lg font-bold sm:text-xl md:text-2xl;
+    }
+
+    .section-spacing {
+        @apply space-y-3 sm:space-y-4 md:space-y-6;
+    }
+
+    /* ============================================================
+       Face Scanner — Techy HUD Overlay
+       ============================================================ */
+
+    /* Corner brackets — larger, glowing */
+    .scanner-corner {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+        border-color: var(--color-primary);
+        border-style: solid;
+        border-width: 0;
+        opacity: 0.7;
+        filter: drop-shadow(0 0 5px oklch(0.72 0.19 155 / 50%));
+        transition: filter 0.35s ease, border-color 0.35s ease, opacity 0.35s ease;
+    }
+    .scanner-corner-tl {
+        top: 14px;
+        left: 14px;
+        border-top-width: 3px;
+        border-left-width: 3px;
+        border-top-left-radius: 10px;
+    }
+    .scanner-corner-tr {
+        top: 14px;
+        right: 14px;
+        border-top-width: 3px;
+        border-right-width: 3px;
+        border-top-right-radius: 10px;
+    }
+    .scanner-corner-bl {
+        bottom: 14px;
+        left: 14px;
+        border-bottom-width: 3px;
+        border-left-width: 3px;
+        border-bottom-left-radius: 10px;
+    }
+    .scanner-corner-br {
+        bottom: 14px;
+        right: 14px;
+        border-bottom-width: 3px;
+        border-right-width: 3px;
+        border-bottom-right-radius: 10px;
+    }
+
+    /* Corner state variants */
+    .scanner-corner-active {
+        border-color: var(--color-primary);
+        filter: drop-shadow(0 0 9px oklch(0.72 0.19 155 / 95%));
+        opacity: 1;
+    }
+    .scanner-corner-matched {
+        border-color: var(--color-success);
+        filter: drop-shadow(0 0 12px oklch(0.72 0.17 160));
+        opacity: 1;
+    }
+    .scanner-corner-ambiguous {
+        border-color: var(--color-warning);
+        filter: drop-shadow(0 0 9px oklch(0.80 0.16 85 / 85%));
+        opacity: 1;
+    }
+
+    /* Face guide oval — biometric targeting ellipse */
+    .scanner-face-oval {
+        position: absolute;
+        top: 7%;
+        bottom: 7%;
+        left: 20%;
+        right: 20%;
+        border-radius: 50%;
+        transition: border-color 0.45s ease, box-shadow 0.45s ease;
+    }
+    .scanner-face-oval-locked {
+        border-style: solid;
+    }
+
+    /* Vignette overlay — draws attention to center */
+    .scanner-vignette {
+        background: radial-gradient(
+            ellipse 72% 68% at 50% 50%,
+            transparent 32%,
+            oklch(0 0 0 / 52%) 100%
+        );
+    }
+
+    /* Scan line — glowing sweep */
+    .scanner-scan-line {
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        height: 2px;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            oklch(0.72 0.19 155 / 55%) 20%,
+            oklch(0.92 0.13 155) 50%,
+            oklch(0.72 0.19 155 / 55%) 80%,
+            transparent 100%
+        );
+        box-shadow:
+            0 0 8px oklch(0.72 0.19 155 / 65%),
+            0 0 22px oklch(0.72 0.19 155 / 32%),
+            0 2px 6px oklch(0.72 0.19 155 / 18%);
+        animation: interact-scan-line 2.6s ease-in-out infinite;
+    }
+
+    /* Status badge — HUD readout pill */
+    .scanner-status-badge {
+        font-family: ui-monospace, 'Courier New', monospace;
+        font-size: 0.63rem;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        padding: 0.28rem 0.9rem;
+        border-radius: 9999px;
+        border: 1px solid;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        white-space: nowrap;
+        line-height: 1.5;
+    }
+    .scanner-status-idle {
+        color: var(--color-muted-foreground);
+        border-color: oklch(1 0 0 / 12%);
+        background: oklch(0 0 0 / 48%);
+    }
+    .scanner-status-detecting {
+        color: var(--color-primary);
+        border-color: oklch(0.72 0.19 155 / 45%);
+        background: oklch(0.17 0.012 260 / 62%);
+        box-shadow: 0 0 14px oklch(0.72 0.19 155 / 20%);
+    }
+    .scanner-status-matched {
+        color: oklch(0.95 0.06 160);
+        border-color: oklch(0.72 0.17 160 / 70%);
+        background: oklch(0.72 0.17 160 / 18%);
+        box-shadow: 0 0 18px oklch(0.72 0.17 160 / 34%);
+    }
+    .scanner-status-ambiguous {
+        color: oklch(0.88 0.11 85);
+        border-color: oklch(0.80 0.16 85 / 50%);
+        background: oklch(0 0 0 / 52%);
+        box-shadow: 0 0 12px oklch(0.80 0.16 85 / 20%);
+    }
+
+    /* HUD corner text */
+    .scanner-hud-text {
+        font-family: ui-monospace, 'Courier New', monospace;
+        font-size: 0.58rem;
+        letter-spacing: 0.14em;
+        color: oklch(0.74 0.012 260 / 60%);
+        text-transform: uppercase;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    /* ---- Animations ---- */
+
+    @keyframes interact-scan-line {
+        0%   { top: 4%;  opacity: 0; }
+        6%   { opacity: 1; }
+        47%  { top: 93%; opacity: 1; }
+        54%  { top: 93%; opacity: 0; }
+        55%  { top: 4%;  opacity: 0; }
+        100% { top: 4%;  opacity: 0; }
+    }
+
+    @keyframes interact-corner-pulse {
+        0%, 100% { opacity: 0.55; transform: scale(1); }
+        50%       { opacity: 1;   transform: scale(1.05); }
+    }
+    .animate-corner-pulse {
+        animation: interact-corner-pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes interact-face-detected {
+        0%   { box-shadow: 0 0 0 0   oklch(0.72 0.17 160 / 45%); }
+        70%  { box-shadow: 0 0 0 18px oklch(0.72 0.17 160 / 0%); }
+        100% { box-shadow: 0 0 0 0   oklch(0.72 0.17 160 / 0%); }
+    }
+    .animate-face-detected {
+        animation: interact-face-detected 1.4s ease-in-out infinite;
+    }
+
+    @keyframes interact-face-oval-pulse {
+        0%, 100% { opacity: 0.40; }
+        50%       { opacity: 0.85; }
+    }
+    .animate-face-oval-pulse {
+        animation: interact-face-oval-pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes interact-face-oval-lock {
+        0%   { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    .animate-face-oval-lock {
+        animation: interact-face-oval-lock 0.35s ease-out forwards;
+    }
+
+    @keyframes interact-success-pop {
+        0%   { transform: scale(0.8); opacity: 0; }
+        55%  { transform: scale(1.05); }
+        100% { transform: scale(1);   opacity: 1; }
+    }
+    .animate-success-pop {
+        animation: interact-success-pop 0.4s ease-out forwards;
+    }
+
+    @keyframes interact-hud-blink {
+        0%, 72%, 100% { opacity: 1; }
+        82%            { opacity: 0.12; }
+    }
+    .scanner-hud-blink {
+        animation: interact-hud-blink 2.8s ease-in-out infinite;
+        color: oklch(0.72 0.19 155 / 78%);
+    }
+
+    .touch-target {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
