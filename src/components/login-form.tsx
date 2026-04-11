@@ -126,6 +126,7 @@ export function LoginForm({
               setUsername(e.target.value)
               clearFormError()
             }}
+            bg="#191c1e"
             disabled={pending}
             className={cn(loginFieldClassName, "pl-10")}
           />
@@ -169,6 +170,7 @@ export function LoginForm({
               setPassword(e.target.value)
               clearFormError()
             }}
+             bg="#191c1e"
             disabled={pending}
             className={cn(loginFieldClassName, "pr-11 pl-10")}
           />
