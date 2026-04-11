@@ -58,6 +58,7 @@ function emailTypeLabel(value: EmailLogType): string {
   return value;
 }
 
+
 export default function EmailLogs() {
   const [page, setPage] = useState(1);
   const limit = 20;
@@ -106,6 +107,13 @@ export default function EmailLogs() {
     setSelected(row);
     setDetailOpen(true);
   };
+
+  const decodeHtml = (html: string): string => {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  };
+
 
   return (
     <MainLayout>
@@ -358,8 +366,10 @@ export default function EmailLogs() {
                 <div>
                   <p className="mb-2 text-muted-foreground">Email body (HTML)</p>
                   <div
-                    className="max-h-[min(420px,50vh)] overflow-auto rounded-md border bg-background p-4 text-sm [&_table]:border-collapse [&_table]:w-full [&_th]:bg-slate-100 [&_th]:text-slate-900 [&_th]:font-semibold [&_th]:border [&_th]:border-slate-300 [&_td]:border [&_td]:border-slate-300 [&_td]:text-foreground"
-                    dangerouslySetInnerHTML={{ __html: selected.emailContent }}
+                    className="max-h-[min(420px,50vh)] bg-white  overflow-auto rounded-md border text-black p-4 text-sm [&_table]:border-collapse [&_table]:w-full [&_th]:bg-slate-100 [&_th]:text-slate-900 [&_th]:font-semibold [&_th]:border  [&_th]:border-slate-300 [&_td]:border [&_td]:border-slate-300"
+                   dangerouslySetInnerHTML={{
+                    __html: decodeHtml(selected.emailContent),
+                  }}
                   />
                 </div>
               )}
