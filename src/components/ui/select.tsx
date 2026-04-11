@@ -21,7 +21,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "flex h-10 w-full items-center justify-between gap-2 rounded-none border border-border bg-background px-3 py-2 text-xs ring-ring/50 outline-none focus-visible:border-ring focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 data-placeholder:text-input-placeholder [&>span]:line-clamp-1",
+        "dark:bg-[#191a1d]  bg-[#f6f9fc] flex h-10 w-full items-center justify-between gap-2 rounded-none border border-border  px-3 py-2 text-xs ring-ring/50 outline-none focus-visible:border-ring focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 data-placeholder:text-input-placeholder [&>span]:line-clamp-1",
         className
       )}
       {...props}
@@ -126,10 +126,10 @@ function SelectItem({
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
-      className={cn(
-        "relative flex w-full cursor-default select-none items-center rounded-none py-1.5 pr-8 pl-2 text-xs outline-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50",
-        className
-      )}
+     className={cn(
+  "relative bg-white dark:bg-[#191a1d] hover:bg-green-50 dark:hover:bg-[#0c0d0f] flex w-full cursor-default select-none items-center rounded-none py-1.5 pr-8 pl-2 text-xs outline-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50",
+  className
+)}
       {...props}
     >
       <span className="absolute right-2 flex size-4 items-center justify-center">
